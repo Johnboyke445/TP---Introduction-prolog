@@ -14,26 +14,26 @@ On utilisera SWISH " https://swish.swi-prolog.org "
   **Qui est rouge ?** 
   `?- requête: couleur(X, rouge).`
   
-  Qu’est-ce que mange Léa ?
+  **Qu’est-ce que mange Léa ?**
   requête: `?- mange(lea, X).`
   
-  Qui mange une pomme ?
+  **Qui mange une pomme ?**
   requête: `?- mange(X, pomme).`
   
-  Quel objet est de couleur jaune ?
+  **Quel objet est de couleur jaune ?**
   requête: `?- couleur(X, jaune).`
   
   Partie 2 - Règles
   Exercice 2
   
-  vrai si la personne mange un fruit :
+  **vrai si la personne mange un fruit :**
   `?- requête: aime_fruit(X).`
   
-  vrai si X et Y ont la même couleur: <br>
+ **vrai si X et Y ont la même couleur:** <br>
   requête pour vérifier une paire spécifique: `?- meme_couleur(carotte, orange).`<br>
   requête pour voir toutes les paires de personnes qui mangent la même chose: `?- meme_couleur(X, Y).`<br>
   
-  vrai si X et Y ont la même couleur:<br>
+  **vrai si X et Y ont la même couleur:** <br>
   requête pour vérifier une paire spécifique: `?- aiment_la_meme_chose(Romain, sarah).`<br>
   requête pour voir toutes les paires de personnes qui mangent la même chose: `?- aiment_la_meme_chose(X, Y).`<br>
 
@@ -66,19 +66,19 @@ On utilisera SWISH " https://swish.swi-prolog.org "
       
   Exercice 5 et 6 - Règles + vérifications
 
-  1. Vrai si P est père de E
+  1. **Vrai si P est père de E**
      requête: `?- pere(pierre, luc).` "Vrai"
 
-  2. Vrai si M est mère de E
+  2. **Vrai si M est mère de E**
      requête: `?- mere(marie, luc).` "Vrai"
 
-  3. Vrai si GP est parent d’un parent de E
+  3. **Vrai si GP est parent d’un parent de E**
      requête: `?- grand_parent(sara, luc).` "Vrai"
 
-  4. ancetre(A, E) (récursif)
+  4. **Vrai si c'est le bon ancetre(A, E) (récursif)**
      requête: `?- ancetre(andre, luc).` "Vrai"
   
-  5. frere_ou_soeur(A, B) (mêmes parents)
+  5. **Vrai si il ont les mêmes parents alors frere_ou_soeur(A, B)**
       requête: `?- frere_ou_soeur(luc, X).` "False"
       
   Exercice 7 - Membre d’une liste
