@@ -44,7 +44,7 @@ On utilisera SWISH " https://swish.swi-prolog.org "
   
   1. Expliquer en 2 phrases le fonctionnement de cette règle.
   La règle dit que si la liste est vide, sa longueur est zéro. 
-  Sinon, Prolog ignore la tête de la liste, calcule récursivement la longueur de la queue, puis ajoute un pour compter la tête, de manière à obtenir la longueur totale de la liste.
+  Sinon, Prolog ignore la tête de la liste, calcule récursivement la longueur de la queue, puis ajoute un pour compter la tête, de manière à obtenir la        longueur totale de la liste.
   
   2.
   `?- longueur([a,b,c], N).`
@@ -89,16 +89,14 @@ On utilisera SWISH " https://swish.swi-prolog.org "
       
   Exercice 7 - Membre d’une liste
   Écrire la règle :
-  `membre(X, [X|_]).`
-
-  `membre(X, [_|T]) :-
+  `membre(X, [X|_]).
+   membre(X, [_|T]) :-
       membre(X, T).`
   
   Exercice 8 - Maximum d’une liste <br>
   
-  `max_liste([X], X).`
-
-  `max_liste([H|T], Max) :-
+  `max_liste([X], X).
+   max_liste([H|T], Max) :-
       max_liste(T, MaxT),                     
       ( H > MaxT -> Max = H ; Max = MaxT ).`  
       
