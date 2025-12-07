@@ -11,7 +11,7 @@ On utilisera SWISH " https://swish.swi-prolog.org "
  Partie 1
  Exercice 1
  
-  Qui est rouge ? 
+  **Qui est rouge ?** 
   `?- requête: couleur(X, rouge).`
   
   Qu’est-ce que mange Léa ?
@@ -58,7 +58,7 @@ On utilisera SWISH " https://swish.swi-prolog.org "
   Le _ dans la tête de la  règle est pour ignorer la tête de la liste car on n'a pas besoin de sa valeur pour calculer la longueur.
   
   Exercice 4 - Somme d'une liste
-  Écrire la règle : Elle doit donner la somme des éléments d’une liste d'entiers.
+  Écrire la règle : Elle doit donner la somme des éléments d’une liste d'entiers.<br>
   `somme([], 0).
   somme([H|T], S) :-
       somme(T, S1),
@@ -88,7 +88,7 @@ On utilisera SWISH " https://swish.swi-prolog.org "
   `membre(X, [_|T]) :-
       membre(X, T).`
   
-  Exercice 8 - Maximum d’une liste
+  Exercice 8 - Maximum d’une liste <br>
   
   `max_liste([X], X).`
 
