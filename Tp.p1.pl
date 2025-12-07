@@ -84,7 +84,7 @@ ancetre(A, E) :-
 frere_ou_soeur(A, B) :-
     parent(P, A),
     parent(P, B),
-	A \= B.
+	A \= B. % A différent de B 
 
 % Cas de base : X est la tête de la liste
 membre(X, [X|_]).
