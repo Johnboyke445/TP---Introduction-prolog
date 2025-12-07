@@ -7,7 +7,7 @@ On utilisera SWISH " https://swish.swi-prolog.org "
 
 ### Requêtes pours les parties : 
 
-/*
+ 
  #### Partie 1 - Les faits et les requêtes <br>
  Exercice 1
  
@@ -102,4 +102,4 @@ On utilisera SWISH " https://swish.swi-prolog.org "
       
   Requête: `?- max_liste([5,8,2,9,4], M).`
 
-  */
+   
