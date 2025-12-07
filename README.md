@@ -1,12 +1,15 @@
-#TP - Introduction à Prolog
+# TP - Introduction à Prolog
 
 Ce TP a pour objectif de se familiariser avec les faits, les règles, les requêtes, et la manipulation des listes en Prolog, ainsi que les relations familiales.
 
-On utilisera SWISH
+On utilisera SWISH " https://swish.swi-prolog.org "
  pour tester le code en ligne.
 
-Partie 1 - Faits et requêtes
-Faits à déclarer dans tp.pl
+
+% =====================================================
+% Partie 1 : Faits
+% =====================================================
+
 % Couleurs des objets
 couleur(pomme, rouge).
 couleur(ballon, bleu).
@@ -21,39 +24,33 @@ mange(sarah, pomme).
 mange(bob, carotte).
 mange(claire, banane).
 
-% Type des aliments
+% Type d'aliment
 type(pomme, fruit).
 type(citron, fruit).
 type(carotte, legume).
 type(banane, fruit).
 
-Exercice 1 - Requêtes
+% Genre
+homme(pierre).
+homme(luc).
+homme(andre).
 
-Qui est rouge ?
+femme(marie).
+femme(sara).
 
-?- couleur(X, rouge).
+% Relations familiales
+parent(pierre, luc).
+parent(marie, luc).
+parent(andre, pierre).
+parent(sara, marie).
 
+% =====================================================
+% Partie 2 : Exercice 2 – Règles
+% =====================================================
 
-Qu’est-ce que mange Léa ?
-
-?- mange(lea, X).
-
-
-Qui mange une pomme ?
-
-?- mange(X, pomme).
-
-
-Quel objet est de couleur jaune ?
-
-?- couleur(X, jaune).
-
-Partie 2 - Règles
-Règle de base : aimer quelque chose
 % X aime Y si X mange Y
 aime(X, Y) :- mange(X, Y).
 
-Exercice 2 - Règles supplémentaires
 % Vrai si la personne mange un fruit
 aime_fruit(Personne) :-
     mange(Personne, Aliment),
@@ -69,314 +66,115 @@ aiment_la_meme_chose(A, B) :-
     mange(A, Aliment),
     mange(B, Aliment).
 
+% =====================================================
+% Partie 3 : Exercice 3 – Longueur d'une liste
+% =====================================================
 
-Exemples de requêtes :
-
-?- aime_fruit(lea).                 % vrai
-?- meme_couleur(carotte, orange).   % vrai
-?- aiment_la_meme_chose(romain, sarah). % vrai
-
-Partie 3 - Manipulation des listes
-Exercice 3 - Longueur d'une liste
+% La longueur d'une liste vide est 0.
+% Sinon, on ignore la tête et on calcule récursivement la longueur de la queue puis on ajoute 1.
 longueur([], 0).
 longueur([_|T], N) :-
     longueur(T, N1),
     N is N1 + 1.
 
-
-_ signifie que la tête de liste n’est pas utilisée.
-
-Exemples :
-
-?- longueur([a,b,c], N).  % N = 3
-?- longueur([], N).        % N = 0
-?- longueur([1,2,3,4,5], N). % N = 5
-
-Exercice 4 - Somme d'une liste
+% =====================================================
+% Partie 4 : Exercice 4 – Somme d'une liste
+% =====================================================
+% La somme d'une liste vide est 0.
+% Sinon, on ajoute la tête à la somme du reste de la liste.
 somme([], 0).
 somme([H|T], S) :-
     somme(T, S1),
     S is H + S1.
 
-
-Exemples :
-
-?- somme([1,2,3], S).  % S = 6
-?- somme([], S).       % S = 0
-
-Partie 4 - Relations familiales
-Faits
-homme(pierre).
-homme(luc).
-homme(andre).
-
-femme(marie).
-femme(sara).
-
-parent(pierre, luc).
-parent(marie, luc).
-parent(andre, pierre).
-parent(sara, marie).
-
-Exercice 5 - Règles
-% Père
+% =====================================================
+% Partie 5 et 6 : Relations familiales
+% =====================================================
 pere(P, E) :-
     homme(P),
     parent(P, E).
 
-% Mère
 mere(M, E) :-
     femme(M),
     parent(M, E).
 
-% Grand-parent
 grand_parent(GP, E) :-
     parent(GP, P),
     parent(P, E).
 
-% Ancêtre (récursif)
 ancetre(A, E) :-
     parent(A, E).
 ancetre(A, E) :-
     parent(A, X),
     ancetre(X, E).
 
-% Frères ou sœurs
 frere_ou_soeur(A, B) :-
     parent(P, A),
     parent(P, B),
     A \= B.
 
-Exercice 6 - Vérifications
-
-Exemples de requêtes :
-
-?- pere(pierre, luc).       % vrai
-?- mere(marie, luc).        % vrai
-?- grand_parent(sara, luc). % vrai
-?- ancetre(andre, luc).     % vrai
-?- frere_ou_soeur(luc, X). % false
-
-Partie 5 - Petits problèmes logiques
-Exercice 7 - Membre d’une liste
+% =====================================================
+% Partie 7 : Exercice 7 – Membre d’une liste
+% =====================================================
 membre(X, [X|_]).
 membre(X, [_|T]) :-
     membre(X, T).
 
-
-Exemples :
-
-?- membre(3, [1,2,3]).   % true
-?- membre(X, [1,2,3]).   % X = 1 ; X = 2 ; X = 3
-
-Exercice 8 - Maximum d’une liste
+% =====================================================
+% Partie 8 : Exercice 8 – Maximum d’une liste
+% =====================================================
 max_liste([X], X).
-
 max_liste([H|T], Max) :-
     max_liste(T, MaxT),
     ( H > MaxT -> Max = H ; Max = MaxT ).
 
+% =====================================================
+% Partie 9 : Requêtes pour tous les exercices
+% =====================================================
 
-Exemple :
-
-?- max_liste([5,8,2,9,4], M). % M = 9
-
-
-#Code complet du TP si dessous : Fichier "Tp.p1
-
- % Faits
-couleur(pomme, rouge).
-couleur(ballon, bleu).
-couleur(citron, jaune).
-couleur(carotte, orange).
-couleur(orange, orange).
-
-mange(romain, pomme).
-mange(lea, citron).
-mange(sarah, pomme).
-mange(bob, carotte).
-mange(claire, banane).
- 
-type(pomme, fruit).
-type(citron, fruit).
-type(carotte, legume).
-type(banane, fruit).
-
-homme(pierre).
-homme(luc).
-homme(andre).
-
-femme(marie).
-femme(sara).
-
-parent(pierre, luc).
-parent(marie, luc).
-parent(andre, pierre).
-parent(sara, marie).
-
-
-% X aime Y si X mange Y
-aime(X, Y) :- mange(X, Y). 
-
-% Vrai si la personne mange un fruit
-aime_fruit(Personne) :-
-    mange(Personne, Aliment),
-    type(Aliment, fruit).
-
-% Vrai si X et Y ont la même couleur
-meme_couleur(X, Y) :-
-    couleur(X, Couleur),
-    couleur(Y, Couleur).
-
-% Vrai si A et B mangent la même chose
-aiment_la_meme_chose(A, B) :-
-    mange(A, Aliment),
-    mange(B, Aliment).
-
-longueur([], 0).
-longueur([_|T], N) :-
-    longueur(T, N1),
-    N is N1 + 1.
-
-somme([], 0).
-somme([H|T], S) :-
-    somme(T, S1),
-    S is H + S1.
-
-% Vrai si P est père de E
-pere(P, E) :-
-    homme(P),
-    parent(P, E).
-
-% Vrai si M est mère de E
-mere(M, E) :-
-    femme(M),
-    parent(M, E).
-
-% Vrai si GP est parent d’un parent de E
-grand_parent(GP, E) :-
-    parent(GP, P),
-    parent(P, E).
-
-% Vrai si c'est notre ancetre
-ancetre(A, E) :-
-    parent(A, E).
-
-ancetre(A, E) :-
-    parent(A, X),
-    ancetre(X, E).
-
-% Vrai si ils ont un parent en commun 
-frere_ou_soeur(A, B) :-
-    parent(P, A),
-    parent(P, B),
-	A \= B.
-
-% Cas de base : X est la tête de la liste
-membre(X, [X|_]).
-
-% Cas récursif : X est dans la queue T
-membre(X, [_|T]) :-
-    membre(X, T).
-
-%le maximum d'une liste avec un seul élément est cet élément
-max_liste([X], X).
-
-% Cas récursif :
-max_liste([H|T], Max) :-
-    max_liste(T, MaxT),                    % calculer le max du reste
-    ( H > MaxT -> Max = H ; Max = MaxT ).  % comparer H au max du reste
-  
-    
 /*
- Partie 1
- Exercice 1
- 
-  Qui est rouge ? 
-  requête: couleur(X, rouge).
-  
-  Qu’est-ce que mange Léa ?
-  requête: mange(lea, X).
-  
-  Qui mange une pomme ?
-  requête: mange(X, pomme).
-  
-  Quel objet est de couleur jaune ?
-  requête: couleur(X, jaune).
-  
-  Partie 2 - Règles
-  Exercice 2
-  
-  vrai si la personne mange un fruit :
-  requête: aime_fruit(X).
-  
-  vrai si X et Y ont la même couleur:
-  requête pour vérifier une paire spécifique: meme_couleur(carotte, orange).
-  requête pour voir toutes les paires de personnes qui mangent la même chose: meme_couleur(X, Y).
-  
-  vrai si X et Y ont la même couleur:
-  requête pour vérifier une paire spécifique: aiment_la_meme_chose(Romain, sarah).
-  requête pour voir toutes les paires de personnes qui mangent la même chose: aiment_la_meme_chose(X, Y).
+Exercice 1 – Faits :
+?- couleur(X, rouge).         % Qui est rouge ?
+?- mange(lea, X).             % Que mange Léa ?
+?- mange(X, pomme).           % Qui mange une pomme ?
+?- couleur(X, jaune).         % Quel objet est jaune ?
 
-  Exercice 3 - Longueur d'une liste
-  Questions
-  
-  1. Expliquer en 2 phrases le fonctionnement de cette règle.
+Exercice 2 – Règles :
+?- aime_fruit(X).                       % Qui mange un fruit ?
+?- meme_couleur(carotte, orange).       % Vérifier une paire spécifique
+?- meme_couleur(X, Y).                  % Voir toutes les paires
+?- aiment_la_meme_chose(romain, sarah). % Vérifier une paire
+?- aiment_la_meme_chose(X, Y).          % Voir toutes les paires
+
+Exercice 3 – Longueur d'une liste :
+1. Expliquer en 2 phrases le fonctionnement de cette règle.
   La règle dit que si la liste est vide, sa longueur est zéro. 
-  Sinon, Prolog ignore la tête de la liste, calcule récursivement la longueur de la queue, puis ajoute un pour compter la tête, de manière à obtenir la longueur totale de la liste.
-  
-  2.
-  ?- longueur([a,b,c], N).
-  N = 3
-  
-  ?- longueur([], N).
-  N = 0
-  
-  ?- longueur([1,2,3,4,5], N).
-  N = 5
-  
-  3.Pourquoi _ dans la tête de la règle ?
+  Sinon, Prolog ignore la tête de la liste, calcule récursivement la longueur de la queue, puis ajoute un pour compter la tête, de manière à obtenir la 	   longueur totale de la liste.
+
+?- longueur([a,b,c], N).         % N = 3
+?- longueur([], N).              % N = 0
+?- longueur([1,2,3,4,5], N).     % N = 5
+
+3.Pourquoi _ dans la tête de la règle ?
   Le _ dans la tête de la  règle est pour ignorer la tête de la liste car on n'a pas besoin de sa valeur pour calculer la longueur.
-  
-  Exercice 4 - Somme d'une liste
-  Écrire la règle : Elle doit donner la somme des éléments d’une liste d'entiers.
-  somme([], 0).
-  somme([H|T], S) :-
-      somme(T, S1),
-      S is H + S1.
-      
-  Exercice 5 et 6 - Règles + vérifications
 
-  1. Vrai si P est père de E
-     requête: pere(pierre, luc). "Vrai"
+Exercice 4 – Somme d'une liste :
+?- somme([1,2,3], S).            % S = 6
 
-  2. Vrai si M est mère de E
-     requête: mere(marie, luc). "Vrai"
+Exercice 5 et 6 – Relations familiales :
+?- pere(pierre, luc).         % true
+?- mere(marie, luc).          % true
+?- grand_parent(sara, luc).   % true
+?- ancetre(andre, luc).       % true
+?- frere_ou_soeur(luc, X).    % false
 
-  3. Vrai si GP est parent d’un parent de E
-     requête: grand_parent(sara, luc). "Vrai"
+Exercice 7 – Membre d'une liste :
+?- membre(3, [1,2,3,4]).            % true
 
-  4. `ancetre(A, E)` (récursif)
-     requête: ancetre(andre, luc). "Vrai"
-  
-  5. `frere_ou_soeur(A, B)` (mêmes parents)
-      requête: frere_ou_soeur(luc, X). "False"
-      
-  Exercice 7 - Membre d’une liste
-  Écrire la règle :
-  membre(X, [X|_]).
+Exercice 8 – Maximum d'une liste :
+?- max_liste([5,8,2,9,4], M).      % M = 9
 
-  membre(X, [_|T]) :-
-      membre(X, T).
-  
-  Exercice 8 - Maximum d’une liste
-  
-  max_liste([X], X).
-
-  max_liste([H|T], Max) :-
-      max_liste(T, MaxT),                     
-      ( H > MaxT -> Max = H ; Max = MaxT ).   
-      
-  Requête: max_liste([5,8,2,9,4], M).
-
-  *
+Exercice 9 – Compléments :
+?- aime_fruit_specifique(romain, pomme).       % true
+?- aiment_le_meme_fruit(romain, sarah, pomme). % true
+*/
