@@ -8,7 +8,7 @@ On utilisera SWISH " https://swish.swi-prolog.org "
 ### Requêtes pours les parties : 
 
 /*
- ####Partie 1 - Les faits et les requêtes <br>
+ #### Partie 1 - Les faits et les requêtes <br>
  Exercice 1
  
   **Qui est rouge ?** 
@@ -23,7 +23,7 @@ On utilisera SWISH " https://swish.swi-prolog.org "
   **Quel objet est de couleur jaune ?**
   requête: `?- couleur(X, jaune).`
   
-  ####Partie 2 - Règles <br>
+  #### Partie 2 - Règles <br>
   Exercice 2
   
   **vrai si la personne mange un fruit :**
@@ -37,7 +37,7 @@ On utilisera SWISH " https://swish.swi-prolog.org "
   requête pour vérifier une paire spécifique: `?- aiment_la_meme_chose(Romain, sarah).`<br>
   requête pour voir toutes les paires de personnes qui mangent la même chose: `?- aiment_la_meme_chose(X, Y).`<br>
 
-  ####Partie 3 - Manipulation des listes <br>
+  #### Partie 3 - Manipulation des listes <br>
 
   Exercice 3 - Longueur d'une liste
   Questions
@@ -66,7 +66,7 @@ On utilisera SWISH " https://swish.swi-prolog.org "
       somme(T, S1),
       S is H + S1.`
 
-  ####Partie 4 - Relations familiales <br>
+  #### Partie 4 - Relations familiales <br>
       
   Exercice 5 et 6 - Règles + vérifications
 
@@ -85,7 +85,7 @@ On utilisera SWISH " https://swish.swi-prolog.org "
   5. **Vrai si il ont les mêmes parents alors frere_ou_soeur(A, B)**
       requête: `?- frere_ou_soeur(luc, X).` "False"
 
-  ####Partie 5 - Petits problèmes logiques <br>
+  #### Partie 5 - Petits problèmes logiques <br>
       
   Exercice 7 - Membre d’une liste
   Écrire la règle :
