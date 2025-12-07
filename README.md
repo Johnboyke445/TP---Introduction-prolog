@@ -1,5 +1,7 @@
 # TP - Introduction à Prolog
 
+Auteur : John DINH 
+
 Ce TP a pour objectif de se familiariser avec les faits, les règles, les requêtes, et la manipulation des listes en Prolog, ainsi que les relations familiales.
 
 On utilisera SWISH " https://swish.swi-prolog.org " pour tester le code en ligne sur le fichier Tp.p1.pl
