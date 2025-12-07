@@ -29,13 +29,13 @@ On utilisera SWISH " https://swish.swi-prolog.org "
   vrai si la personne mange un fruit :
   `?- requête: aime_fruit(X).`
   
-  vrai si X et Y ont la même couleur:
-  requête pour vérifier une paire spécifique: `?- meme_couleur(carotte, orange).`
-  requête pour voir toutes les paires de personnes qui mangent la même chose: `?- meme_couleur(X, Y).`
+  vrai si X et Y ont la même couleur: <br>
+  requête pour vérifier une paire spécifique: `?- meme_couleur(carotte, orange).`<br>
+  requête pour voir toutes les paires de personnes qui mangent la même chose: `?- meme_couleur(X, Y).`<br>
   
-  vrai si X et Y ont la même couleur:
-  requête pour vérifier une paire spécifique: `?- aiment_la_meme_chose(Romain, sarah).`
-  requête pour voir toutes les paires de personnes qui mangent la même chose: `?- aiment_la_meme_chose(X, Y).`
+  vrai si X et Y ont la même couleur:<br>
+  requête pour vérifier une paire spécifique: `?- aiment_la_meme_chose(Romain, sarah).`<br>
+  requête pour voir toutes les paires de personnes qui mangent la même chose: `?- aiment_la_meme_chose(X, Y).`<br>
 
   Exercice 3 - Longueur d'une liste
   Questions
