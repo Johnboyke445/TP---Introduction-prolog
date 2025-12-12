@@ -97,8 +97,8 @@ On utilisera SWISH " https://swish.swi-prolog.org " pour tester le code en ligne
   
   Exercice 8 - Maximum d’une liste <br>
   
-  `max_liste([X], X).
-   max_liste([H|T], Max) :-
+  `max_liste([X], X)`  <br>
+   `max_liste([H|T], Max) :-
       max_liste(T, MaxT),                     
       ( H > MaxT -> Max = H ; Max = MaxT ).`  
       
