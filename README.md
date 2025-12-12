@@ -99,8 +99,8 @@ On utilisera SWISH " https://swish.swi-prolog.org " pour tester le code en ligne
   
   `max_liste([X], X)`  <br>
    `max_liste([H|T], Max) :-
-      max_liste(T, MaxT),                     
-      ( H > MaxT -> Max = H ; Max = MaxT ).`  
+      max_liste(T, MaxT),`  <br>                  
+      `( H > MaxT -> Max = H ; Max = MaxT ).`  
       
   Requête: `?- max_liste([5,8,2,9,4], M).`
 
